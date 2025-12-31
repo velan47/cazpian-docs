@@ -1,0 +1,53 @@
+[
+  {
+    "slug": "introducing-cazpian-lakehouse",
+    "title": "Introducing Cazpian: An AWS-first Lakehouse Platform",
+    "description": "Learn what Cazpian is, why we built it, and how it helps data teams on AWS.",
+    "tags": [
+      "cazpian",
+      "lakehouse",
+      "aws",
+      "apache-iceberg",
+      "spark"
+    ],
+    "date": "2025-12-25",
+    "content": "We are excited to announce **Cazpian**, a new kind of data platform built from the ground up for AWS. \n\nIn today's world, data teams face a constant struggle: how to manage massive amounts of data without getting bogged down by infrastructure complexity. Cazpian solves this by combining the power of **Apache Iceberg** and **Apache Spark** into a seamless, managed experience.\n\n<!-- truncate -->\n\n### Why Cazpian?\nMost platforms try to do everything. We focus on one thing: making your AWS data lake work like a high-performance warehouse. With our Lakehouse architecture, you get:\n- **ACID Transactions**: Never worry about partial writes again.\n- **Time Travel**: Query previous versions of your data effortlessly.\n- **Schema Evolution**: Change your data structure without breaking downstream pipelines.\n\nStay tuned as we dive deeper into our technology stack in future posts!"
+  },
+  {
+    "slug": "why-apache-iceberg-and-spark-for-cazpian",
+    "title": "Why Apache Iceberg and Spark for Cazpian?",
+    "description": "Explain the technology choices: Apache Iceberg, Spark, AWS-first approach.",
+    "tags": [
+      "iceberg",
+      "spark",
+      "technology",
+      "aws"
+    ],
+    "date": "2025-12-25",
+    "content": "When we started building Cazpian, we had a choice of many different storage formats and compute engines. We chose **Apache Iceberg** and **Apache Spark** for three main reasons:\n\n<!-- truncate -->\n\n### 1. Interoperability\nIceberg represents the future of open table formats. By using Iceberg, Cazpian ensures that your data remains yours. You can query your tables from Athena, Snowflake, or Databricks without any vendor lock-in.\n\n### 2. Massive Scalability\nApache Spark remains the industry standard for distributed computing. Our integrated Spark engine is optimized specifically for Iceberg, providing lightning-fast performance for even the largest datasets.\n\n### 3. AWS Native Integration\nBy focusing exclusively on AWS, we can optimize the storage layer (S3) and the compute layer in ways that \"cloud-agnostic\" platforms simply cannot. This results in better performance and lower costs for our users."
+  },
+  {
+    "slug": "ai-studio-for-data-teams",
+    "title": "AI Studio for Data Teams",
+    "description": "Introduce Cazpian AI Studio and how it helps data teams build agents and automations.",
+    "tags": [
+      "ai-studio",
+      "ai",
+      "data-teams",
+      "automation"
+    ],
+    "date": "2025-12-25",
+    "content": "The biggest challenge in AI today isn't the model—it's the data. **Cazpian AI Studio** was built to bridge the gap between your Lakehouse and your AI applications.\n\n<!-- truncate -->\n\n### Turning Data into Action\nWith AI Studio, you create agents that understand your data schema and perform logic. AI Studio makes it easy to deploy these agents with a few clicks, safe in the knowledge that they are running securely within your AWS account."
+  },
+  {
+    "slug": "my-test-post",
+    "title": "Testing the JSON Automation",
+    "description": "It works!",
+    "tags": [
+      "cazpian",
+      "testing"
+    ],
+    "date": "2025-12-26",
+    "content": "This post was created automatically without writing any markdown files! \n\n ### Is it magic? \n No, it is just code."
+  }
+]

@@ -1,0 +1,36 @@
+cazpian:
+  label: Cazpian
+  permalink: /cazpian
+lakehouse:
+  label: Lakehouse
+  permalink: /lakehouse
+aws:
+  label: AWS
+  permalink: /aws
+apache-iceberg:
+  label: Apache Iceberg
+  permalink: /apache-iceberg
+spark:
+  label: Spark
+  permalink: /spark
+iceberg:
+  label: Iceberg
+  permalink: /iceberg
+technology:
+  label: Technology
+  permalink: /technology
+ai-studio:
+  label: AI Studio
+  permalink: /ai-studio
+ai:
+  label: AI
+  permalink: /ai
+data-teams:
+  label: Data Teams
+  permalink: /data-teams
+automation:
+  label: Automation
+  permalink: /automation
+testing:
+  label: Testing
+  permalink: /testing
