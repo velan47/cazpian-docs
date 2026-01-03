@@ -22,14 +22,18 @@ function generate() {
         console.log(`[${new Date().toLocaleTimeString()}] Generating ${blogPosts.length} posts...`);
 
         blogPosts.forEach(post => {
+            const imageField = post.image ? `image: ${post.image}` : '';
+            const imageMarkdown = post.image ? `![${post.title}](${post.image})\n\n` : '';
+
             const frontmatter = `---
 slug: ${post.slug}
 title: "${post.title}"
 description: "${post.description}"
 tags: [${post.tags.join(', ')}]
+${imageField}
 ---
 
-${post.content}
+${imageMarkdown}${post.content}
 `;
 
             const datePrefix = post.date ? post.date : new Date().toISOString().split('T')[0];

@@ -7,6 +7,56 @@
 /* You can override the default Infima variables here. */
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap');
 
+/* Prevent Horizontal Scrolling Globally */
+html,
+body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* Custom Premium Minimalist Scrollbar - Reveal on Hover */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: transparent;
+  /* Hidden by default */
+  border-radius: 20px;
+}
+
+/* Show scrollbar when hovering the page */
+html:hover ::-webkit-scrollbar-thumb {
+  background: #94a3b8;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #64748b !important;
+}
+
+[data-theme='dark'] html:hover ::-webkit-scrollbar-thumb {
+  background: #4a5568;
+}
+
+[data-theme='dark'] ::-webkit-scrollbar-thumb:hover {
+  background: #cbd5e1 !important;
+}
+
+/* Firefox support */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #94a3b8 transparent;
+}
+
+[data-theme='dark'] * {
+  scrollbar-color: #475569 transparent;
+}
+
 :root {
   --ifm-color-primary: #0b5cff;
   --ifm-color-primary-dark: #0848c0;
@@ -41,16 +91,57 @@
 
 .hero--primary {
   --ifm-hero-background-color: transparent;
-  background: radial-gradient(circle at 10% 20%, rgba(11, 92, 255, 0.05) 0%, transparent 40%),
-    radial-gradient(circle at 90% 80%, rgba(74, 141, 255, 0.05) 0%, transparent 40%);
   padding: 8rem 0;
   position: relative;
   text-align: center;
+  overflow: hidden;
+  background: #ffffff;
+  /* Base subtle grey dots always visible */
+  background-image: radial-gradient(circle, #f1f5f9 2px, transparent 2px);
+  background-size: 32px 32px;
 }
 
 [data-theme='dark'] .hero--primary {
-  background: radial-gradient(circle at 10% 20%, rgba(11, 92, 255, 0.1) 0%, transparent 40%),
-    radial-gradient(circle at 90% 80%, rgba(74, 141, 255, 0.1) 0%, transparent 40%);
+  background: #0f172a;
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.05) 1.5px, transparent 1.5px);
+}
+
+.interactive-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  z-index: 1;
+  /* Muted blue dots that appear on hover - Brightened slightly */
+  background-image: radial-gradient(circle, rgba(11, 92, 255, 0.7) 1.8px, transparent 1.8px);
+  background-size: 32px 32px;
+  -webkit-mask-image: radial-gradient(400px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+      black 0%,
+      rgba(0, 0, 0, 0.4) 50%,
+      transparent 100%);
+  mask-image: radial-gradient(400px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+      black 0%,
+      rgba(0, 0, 0, 0.4) 50%,
+      transparent 100%);
+}
+
+[data-theme='dark'] .interactive-glow {
+  background-image: radial-gradient(circle, rgba(74, 141, 255, 0.7) 2.2px, transparent 2.2px);
+}
+
+.hero--primary:hover .interactive-glow {
+  opacity: 0.85;
+  /* Increased from 0.6 for better visibility */
+}
+
+
+.hero-container-custom {
+  position: relative;
+  z-index: 2;
 }
 
 .hero__title {
@@ -66,9 +157,34 @@
   margin-right: auto;
 }
 
+.hero-logo-container {
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .hero-logo-container {
+    display: none;
+  }
+}
+
+.hero-logo-img {
+  height: 3.5rem;
+  width: auto;
+  filter: drop-shadow(0 0 20px rgba(11, 92, 255, 0.2));
+}
+
+.hero__title_custom {
+  font-weight: 600 !important;
+  letter-spacing: -0.03em !important;
+}
+
 .hero__title_blue {
   color: var(--ifm-color-primary);
-  display: block;
+  display: inline-block;
+  margin-left: 0.2rem;
 }
 
 .hero__subtitle {
@@ -113,32 +229,40 @@
 }
 
 .feature-tab-item {
-  padding: 2rem;
+  padding: 2.5rem;
   border-radius: 20px;
   cursor: pointer;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  border: 1px solid transparent;
-  background: transparent;
+  border: 1px solid #eef2f6;
+  background: #f8fafc;
   text-align: left;
+  margin-bottom: 0.5rem;
 }
 
 .feature-tab-item:hover {
-  background: rgba(11, 92, 255, 0.03);
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+}
+
+[data-theme='dark'] .feature-tab-item {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.05);
 }
 
 [data-theme='dark'] .feature-tab-item:hover {
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .feature-tab-item.active {
-  background: rgba(11, 92, 255, 0.05);
-  border-color: rgba(11, 92, 255, 0.1);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  background: #ffffff;
+  border-color: #cbd5e1;
+  /* Soft grey border instead of blue */
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
 [data-theme='dark'] .feature-tab-item.active {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
 .tab-header {
@@ -148,16 +272,6 @@
   margin-bottom: 0.5rem;
 }
 
-.tab-icon {
-  font-size: 1.5rem;
-  opacity: 0.7;
-  transition: transform 0.3s ease;
-}
-
-.active .tab-icon {
-  opacity: 1;
-  transform: scale(1.1);
-}
 
 .tab-title {
   font-size: 1.25rem;
@@ -538,4 +652,734 @@
 
 .header-github-link:hover::before {
   background-color: var(--ifm-color-primary);
+}
+
+/* Premium Compact Footer Styling */
+.footer {
+  background-color: #0b0f19 !important;
+  /* Specific dark navy as requested */
+  padding: 3rem 0 2rem !important;
+  /* Reduced bottom padding */
+  color: #ffffff;
+}
+
+.footer__title {
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  margin-bottom: 0.75rem !important;
+  /* Tighter title margin */
+  text-transform: none !important;
+  letter-spacing: -0.01em;
+  font-size: 0.9rem !important;
+}
+
+/* Set global footer variables for deep override */
+:root {
+  --ifm-footer-link-color: #94A3B8;
+}
+
+/* Force override with the correct Docusaurus classes */
+.footer__item,
+.footer__link,
+.footer__item a {
+  color: #94A3B8 !important;
+  font-size: 0.76rem !important;
+  font-weight: 500 !important;
+  transition: color 0.2s ease;
+  line-height: 1.6 !important;
+  /* Tighter line height */
+  margin-bottom: 0.35rem !important;
+  /* Spacing between items */
+}
+
+.footer__item a:hover,
+.footer__link:hover {
+  color: #ffffff !important;
+  text-decoration: none !important;
+}
+
+/* Tagline Column */
+.footer-tagline-container {
+  max-width: 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.footer-logo-wrapper {
+  margin-top: -1.3rem;
+  /* Fine-tuned to align better with column headers */
+  margin-bottom: 1.25rem;
+  width: 100%;
+}
+
+.footer-logo-custom {
+  height: 2.2rem;
+  width: auto;
+  object-fit: contain;
+}
+
+.footer-tagline {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: #cbd5e1;
+  margin-bottom: 1.5rem;
+  opacity: 0.9;
+  text-align: left;
+}
+
+.footer-socials {
+  display: flex;
+  gap: 1.25rem;
+}
+
+.footer-social-link {
+  color: #ffffff;
+  font-size: 1.1rem;
+  opacity: 0.7;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.footer-social-link:hover {
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+/* Newsletter Section */
+.footer-newsletter {
+  max-width: 300px;
+}
+
+.footer-newsletter p {
+  font-size: 0.8rem;
+  color: #cbd5e1;
+  margin-bottom: 1rem;
+}
+
+.newsletter-form {
+  display: flex;
+  background: rgba(15, 23, 42, 0.6);
+  /* Darker input background */
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 0.75rem;
+  padding: 3px;
+}
+
+.newsletter-input {
+  background: transparent;
+  border: none;
+  color: white;
+  padding: 0.6rem 0.8rem;
+  flex-grow: 1;
+  outline: none;
+  font-size: 0.85rem;
+}
+
+.newsletter-input::placeholder {
+  color: #475569;
+}
+
+.newsletter-btn {
+  background: #6366f1;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.newsletter-btn:hover {
+  background: #4f46e5;
+}
+
+.newsletter-disclaimer {
+  font-size: 0.7rem !important;
+  color: #64748b !important;
+  line-height: 1.3;
+}
+
+.footer__copyright {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  font-size: 0.75rem;
+  text-align: center;
+  opacity: 0.6;
+}
+
+@media screen and (max-width: 996px) {
+  .footer {
+    padding: 2.5rem 1.25rem;
+  }
+}
+
+/* --- COMPACT INLINE CARD LAYOUT (Fully Compressed) --- */
+/* Strictly enforces content fits within the 220px image height */
+
+[class*='blog-list-page' i] .container {
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  padding: 3rem 1.5rem !important;
+}
+
+[class*='blog-list-page' i] .row {
+  display: flex !important;
+  justify-content: center !important;
+  gap: 3rem !important;
+}
+
+/* Sidebar styling */
+[class*='blog-list-page' i] aside {
+  display: block !important;
+  flex: 0 0 240px !important;
+  max-width: 240px !important;
+}
+
+/* Main Post Column */
+[class*='blog-list-page' i] main {
+  flex: 1 !important;
+  max-width: 850px !important;
+  padding: 0 !important;
+}
+
+/* --- BLOG CARD THEME VARIABLES --- */
+:root {
+  --blog-card-bg: #ffffff;
+  --blog-card-border: #e2e8f0;
+  --blog-card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  --blog-card-hover-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
+  --blog-card-title: #0f172a;
+  --blog-card-text: #475569;
+  --blog-card-meta: #64748b;
+  --blog-card-tag-bg: #f1f5f9;
+  --blog-card-tag-text: #64748b;
+  --blog-card-tag-border: #e2e8f0;
+  --blog-card-tag-hover-bg: #5b59e4;
+  --blog-card-tag-hover-text: #ffffff;
+  --blog-card-img-border: #f1f5f9;
+}
+
+html[data-theme='dark'] {
+  --blog-card-bg: #1e293b;
+  --blog-card-border: #334155;
+  --blog-card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+  --blog-card-hover-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+  --blog-card-title: #f1f5f9;
+  --blog-card-text: #cbd5e1;
+  --blog-card-meta: #94a3b8;
+  --blog-card-tag-bg: #0f172a;
+  --blog-card-tag-text: #94a3b8;
+  --blog-card-tag-border: #1e293b;
+  --blog-card-tag-hover-bg: #5b59e4;
+  --blog-card-tag-hover-text: #ffffff;
+  --blog-card-img-border: #334155;
+}
+
+/* --- STANDARD CARD LAYOUT (Fixed Size & Clickable) --- */
+
+[class*='blog-list-page' i] .container {
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  padding: 1.5rem 1.5rem 0 1.5rem !important;
+  /* Reduced top, NO bottom padding */
+}
+
+[class*='blog-list-page' i] .row {
+  display: flex !important;
+  justify-content: center !important;
+  gap: 3rem !important;
+  margin-bottom: 0 !important;
+  padding-bottom: 1rem !important;
+}
+
+/* Base Article Card - THE BOX */
+[class*='blog-list-page' i] article {
+  display: flex !important;
+  flex-direction: column !important;
+  /* Stack Header, Markdown, Footer */
+  justify-content: center !important;
+  /* Center vertically */
+
+  position: relative !important;
+  /* STRICT FIXED HEIGHTS */
+  height: 220px !important;
+  min-height: 220px !important;
+  max-height: 220px !important;
+
+  margin-bottom: 2.5rem !important;
+  padding: 24px 24px 24px 350px !important;
+  /* Fixed padding */
+
+  background-color: var(--blog-card-bg) !important;
+  border: 1px solid var(--blog-card-border) !important;
+  border-radius: 16px !important;
+  box-shadow: var(--blog-card-shadow) !important;
+  overflow: hidden !important;
+  isolation: isolate;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, border-color 0.2s ease !important;
+  cursor: pointer !important;
+  /* Indicate clickability */
+}
+
+[class*='blog-list-page' i] article:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: var(--blog-card-hover-shadow) !important;
+}
+
+/* --- CLICKABLE CARD HACK --- */
+/* Expand the Title Link to cover the whole card */
+[class*='blog-list-page' i] article h2 a::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  z-index: 100 !important;
+}
+
+/* Ensure relative position on tags so they remain clickable if needed (optional) */
+/* Ideally the whole card click replaces specific tag clicks, but Z-index can specificy */
+
+/* --- 1. IMAGE (Absolute Left) --- */
+[class*='blog-list-page' i] article [class*='markdown'] p:has(img) {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  bottom: 0 !important;
+  width: 320px !important;
+  /* Fixed Width matching padding gap */
+  height: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  z-index: 1;
+}
+
+[class*='blog-list-page' i] article [class*='markdown'] p:has(img) img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  border-right: 1px solid var(--blog-card-img-border) !important;
+}
+
+/* --- 2. HEADER (Title & Meta) --- */
+[class*='blog-list-page' i] article header {
+  margin-bottom: 8px !important;
+  pointer-events: none;
+  /* Let clicks pass through to link */
+}
+
+/* Re-enable pointer events on the link itself */
+[class*='blog-list-page' i] article h2 a {
+  pointer-events: auto !important;
+}
+
+[class*='blog-list-page' i] article h2 {
+  margin: 0 0 6px 0 !important;
+  font-size: 1.3rem !important;
+  font-weight: 800 !important;
+  line-height: 1.25 !important;
+}
+
+[class*='blog-list-page' i] article h2 a {
+  color: var(--blog-card-title) !important;
+  text-decoration: none !important;
+}
+
+[class*='blog-list-page' i] article header>div:last-child {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  font-size: 0.8rem !important;
+  color: var(--blog-card-meta) !important;
+}
+
+[class*='blog-list-page' i] article time {
+  font-weight: 700 !important;
+  color: #5b59e4 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+}
+
+[class*='blog-list-page' i] article header>div:last-child span:last-child::before {
+  content: "•";
+  margin: 0 6px;
+  color: var(--blog-card-meta) !important;
+  opacity: 0.5;
+}
+
+/* --- 3. DESCRIPTION (Markdown Content) --- */
+[class*='blog-list-page' i] article [class*='markdown'] {
+  margin-bottom: 0 !important;
+  /* Remove bottom margin to let flex space work */
+  flex: 1 !important;
+  /* Allow it to take available space */
+  overflow: hidden !important;
+  /* Catch overflow */
+}
+
+[class*='blog-list-page' i] article [class*='markdown'] p {
+  display: -webkit-box !important;
+  -webkit-line-clamp: 3 !important;
+  /* Strict 3 lines */
+  line-clamp: 3 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+
+  font-size: 0.95rem !important;
+  line-height: 1.5 !important;
+  color: var(--blog-card-text) !important;
+  visibility: visible !important;
+  height: auto !important;
+}
+
+/* --- 4. FOOTER (Tags) --- */
+[class*='blog-list-page' i] article footer {
+  margin-top: 12px !important;
+  height: 26px !important;
+  /* Fixed height for tags area */
+  overflow: hidden !important;
+}
+
+[class*='blog-list-page' i] article .tags,
+[class*='blog-list-page' i] article ul[class*='tags'] {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  /* Don't wrap tags, hide extras */
+  overflow: hidden !important;
+  gap: 8px !important;
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+[class*='blog-list-page' i] article .tags li a,
+[class*='blog-list-page' i] article ul[class*='tags'] li a {
+  display: inline-flex !important;
+  align-items: center !important;
+  padding: 3px 8px !important;
+  background: var(--blog-card-tag-bg) !important;
+  border: 1px solid var(--blog-card-tag-border) !important;
+  border-radius: 6px !important;
+  font-size: 0.65rem !important;
+  font-weight: 700 !important;
+  color: var(--blog-card-tag-text) !important;
+  text-decoration: none !important;
+  text-transform: uppercase !important;
+  white-space: nowrap !important;
+  /* Keep tags on one line */
+
+  position: relative !important;
+  z-index: 101 !important;
+  /* Higher than card link so tags are clickable specifically if needed */
+  transition: all 0.2s ease !important;
+}
+
+[class*='blog-list-page' i] article .tags li a:hover,
+[class*='blog-list-page' i] article ul[class*='tags'] li a:hover {
+  background: var(--blog-card-tag-hover-bg) !important;
+  color: var(--blog-card-tag-hover-text) !important;
+  border-color: var(--blog-card-tag-hover-bg) !important;
+}
+
+/* --- HIDE EXTRANEOUS --- */
+[class*='blog-list-page' i] article footer strong,
+/* Tags: label */
+[class*='blog-list-page' i] article footer b,
+[class*='blog-list-page' i] article footer div[class*='avatar'],
+[class*='blog-list-page' i] article [class*='readMore'],
+[class*='blog-list-page' i] article [class*='markdown'] :is(h1, h2, h3, h4, h5, h6, ul, ol, blockquote, pre) {
+  display: none !important;
+}
+
+/* --- DARK MODE SUPPORT --- */
+/* Using html[data-theme='dark'] to ensure specificity overrides base styles */
+
+@media (max-width: 996px) {
+  html[data-theme='dark'] [class*='blog-list-page' i] article [class*='markdown'] p:has(img) img {
+    border-right: none !important;
+    border-bottom: 1px solid var(--blog-card-img-border) !important;
+  }
+}
+
+/* Mobile Responsive */
+@media (max-width: 996px) {
+  [class*='blog-list-page' i] article {
+    flex-direction: column !important;
+    height: auto !important;
+    min-height: auto !important;
+    max-height: none !important;
+    padding: 0 0 20px 0 !important;
+    /* Bottom padding for the card */
+  }
+
+  /* Image on Top */
+  [class*='blog-list-page' i] article [class*='markdown'] p:has(img) {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    width: 100% !important;
+    height: 220px !important;
+    margin: 0 0 16px 0 !important;
+    border-radius: 16px 16px 0 0 !important;
+    /* Match card radius top */
+  }
+
+  [class*='blog-list-page' i] article [class*='markdown'] p:has(img) img {
+    border-right: none !important;
+    border-bottom: 1px solid #f1f5f9 !important;
+  }
+
+  /* Content Padding */
+  [class*='blog-list-page' i] article header,
+  [class*='blog-list-page' i] article [class*='markdown'] p,
+  [class*='blog-list-page' i] article footer {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Ensure image P doesn't get the padding above */
+  [class*='blog-list-page' i] article [class*='markdown'] p:has(img) {
+    padding: 0 !important;
+  }
+
+  /* Relax constraints */
+  [class*='blog-list-page' i] article h2 {
+    font-size: 1.25rem !important;
+  }
+
+  [class*='blog-list-page' i] article footer {
+    margin-top: 12px !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  [class*='blog-list-page' i] article .tags,
+  [class*='blog-list-page' i] article ul[class*='tags'] {
+    flex-wrap: wrap !important;
+    /* Allow tags to wrap on mobile */
+    overflow: visible !important;
+    white-space: normal !important;
+    height: auto !important;
+  }
+
+  [class*='blog-list-page' i] article .tags li a,
+  [class*='blog-list-page' i] article ul[class*='tags'] li a {
+    white-space: normal !important;
+  }
+
+}
+
+/* --- MODERN DOCUMENTATION SIDEBAR UI --- */
+
+/* Sidebar Container */
+[class^='docSidebarContainer'] {
+  border-right: 1px solid var(--ifm-toc-border-color);
+  background-color: var(--ifm-background-color);
+}
+
+[data-theme='dark'] [class^='docSidebarContainer'] {
+  border-right: 1px solid #334155;
+  background-color: #0b0f19;
+}
+
+/* Menu List Spacing */
+.theme-doc-sidebar-menu.menu__list {
+  padding: 1rem 0.5rem;
+}
+
+/* Menu Items */
+.theme-doc-sidebar-menu .menu__list-item {
+  margin-bottom: 4px;
+}
+
+/* Link Base Style */
+.theme-doc-sidebar-menu .menu__link {
+  border-radius: 8px;
+  padding: 0.6rem 1rem;
+  color: #64748b;
+  /* Slate-500 */
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+}
+
+/* Link Hover */
+.theme-doc-sidebar-menu .menu__link:hover {
+  background-color: #f1f5f9;
+  /* Slate-100 */
+  color: #0f172a;
+  /* Slate-900 */
+  text-decoration: none;
+}
+
+/* Link Active State */
+.theme-doc-sidebar-menu .menu__link--active {
+  background-color: rgba(91, 89, 228, 0.08);
+  /* Brand color transparent */
+  color: #5b59e4 !important;
+  /* Brand Indigo */
+  font-weight: 700;
+  border-color: rgba(91, 89, 228, 0.1);
+}
+
+/* Category Label (if explicit, though Docusaurus usually uses links) */
+.theme-doc-sidebar-menu .menu__list-item-collapsible .menu__link {
+  font-weight: 700;
+  color: #334155;
+}
+
+/* Dark Mode Overrides */
+html[data-theme='dark'] .theme-doc-sidebar-menu .menu__link {
+  color: #94a3b8;
+  /* Slate-400 */
+}
+
+html[data-theme='dark'] .theme-doc-sidebar-menu .menu__link:hover {
+  background-color: #1e293b;
+  /* Slate-800 */
+  color: #f8fafc;
+  /* Slate-50 */
+}
+
+/* --- MODERN DOCS CONTENT UI --- */
+
+/* 1. Breadcrumbs */
+.breadcrumbs {
+  margin-bottom: 2rem;
+  padding: 0;
+  background: transparent;
+}
+
+.breadcrumbs__item {
+  color: #64748b;
+  font-size: 0.85rem;
+}
+
+.breadcrumbs__link {
+  border-radius: 6px;
+  padding: 4px 8px;
+  transition: all 0.2s;
+  color: inherit;
+}
+
+.breadcrumbs__link:hover {
+  background: #f1f5f9;
+  color: #0f172a;
+  text-decoration: none;
+}
+
+[data-theme='dark'] .breadcrumbs__link:hover {
+  background: #1e293b;
+  color: #f8fafc;
+}
+
+/* 2. Main Typography */
+article header h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(135deg, #0f172a 0%, #334155 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1.2;
+}
+
+[data-theme='dark'] article header h1 {
+  background: linear-gradient(135deg, #f8fafc 0%, #cbd5e1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.markdown h2 {
+  font-size: 1.8rem;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.markdown p {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: #334155;
+}
+
+[data-theme='dark'] .markdown p {
+  color: #cbd5e1;
+}
+
+/* 3. Pagination (Next/Prev Cards) */
+.pagination-nav {
+  margin-top: 4rem;
+  gap: 1.5rem;
+}
+
+.pagination-nav__link {
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 1.5rem;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  background: #ffffff;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+}
+
+.pagination-nav__link:hover {
+  border-color: #5b59e4;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(91, 89, 228, 0.15);
+  text-decoration: none;
+}
+
+.pagination-nav__sublabel {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #94a3b8;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.pagination-nav__label {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+[data-theme='dark'] .pagination-nav__link {
+  background: #0f172a;
+  border-color: #334155;
+  box-shadow: none;
+}
+
+[data-theme='dark'] .pagination-nav__link:hover {
+  border-color: #5b59e4;
+  background: #1e293b;
+}
+
+[data-theme='dark'] .pagination-nav__label {
+  color: #f1f5f9;
+}
+
+html[data-theme='dark'] .theme-doc-sidebar-menu .menu__link--active {
+  background-color: rgba(91, 89, 228, 0.15);
+  color: #818cf8 !important;
+  /* Lighter Indigo for Dark Mode */
+  border-color: rgba(91, 89, 228, 0.2);
+}
+
+html[data-theme='dark'] .theme-doc-sidebar-menu .menu__list-item-collapsible .menu__link {
+  color: #e2e8f0;
 }

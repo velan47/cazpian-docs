@@ -3,7 +3,10 @@ slug: introducing-cazpian-lakehouse
 title: "Introducing Cazpian: An AWS-first Lakehouse Platform"
 description: "Learn what Cazpian is, why we built it, and how it helps data teams on AWS."
 tags: [cazpian, lakehouse, aws, apache-iceberg, spark]
+image: /img/Introducing%20Cazpian%20An%20AWS-first%20Lakehouse%20Platform.png
 ---
+
+![Introducing Cazpian: An AWS-first Lakehouse Platform](/img/Introducing%20Cazpian%20An%20AWS-first%20Lakehouse%20Platform.png)
 
 We are excited to announce **Cazpian**, a new kind of data platform built from the ground up for AWS. 
 

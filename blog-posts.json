@@ -10,6 +10,7 @@
       "apache-iceberg",
       "spark"
     ],
+    "image": "/img/Introducing%20Cazpian%20An%20AWS-first%20Lakehouse%20Platform.png",
     "date": "2025-12-25",
     "content": "We are excited to announce **Cazpian**, a new kind of data platform built from the ground up for AWS. \n\nIn today's world, data teams face a constant struggle: how to manage massive amounts of data without getting bogged down by infrastructure complexity. Cazpian solves this by combining the power of **Apache Iceberg** and **Apache Spark** into a seamless, managed experience.\n\n<!-- truncate -->\n\n### Why Cazpian?\nMost platforms try to do everything. We focus on one thing: making your AWS data lake work like a high-performance warehouse. With our Lakehouse architecture, you get:\n- **ACID Transactions**: Never worry about partial writes again.\n- **Time Travel**: Query previous versions of your data effortlessly.\n- **Schema Evolution**: Change your data structure without breaking downstream pipelines.\n\nStay tuned as we dive deeper into our technology stack in future posts!"
   },
@@ -23,6 +24,7 @@
       "technology",
       "aws"
     ],
+    "image": "/img/Why%20Apache%20Iceberg%20and%20Spark%20for%20Cazpian.png",
     "date": "2025-12-25",
     "content": "When we started building Cazpian, we had a choice of many different storage formats and compute engines. We chose **Apache Iceberg** and **Apache Spark** for three main reasons:\n\n<!-- truncate -->\n\n### 1. Interoperability\nIceberg represents the future of open table formats. By using Iceberg, Cazpian ensures that your data remains yours. You can query your tables from Athena, Snowflake, or Databricks without any vendor lock-in.\n\n### 2. Massive Scalability\nApache Spark remains the industry standard for distributed computing. Our integrated Spark engine is optimized specifically for Iceberg, providing lightning-fast performance for even the largest datasets.\n\n### 3. AWS Native Integration\nBy focusing exclusively on AWS, we can optimize the storage layer (S3) and the compute layer in ways that \"cloud-agnostic\" platforms simply cannot. This results in better performance and lower costs for our users."
   },
@@ -36,6 +38,7 @@
       "data-teams",
       "automation"
     ],
+    "image": "/img/Ai%20stutio%20for%20data%20teams.png",
     "date": "2025-12-25",
     "content": "The biggest challenge in AI today isn't the model—it's the data. **Cazpian AI Studio** was built to bridge the gap between your Lakehouse and your AI applications.\n\n<!-- truncate -->\n\n### Turning Data into Action\nWith AI Studio, you create agents that understand your data schema and perform logic. AI Studio makes it easy to deploy these agents with a few clicks, safe in the knowledge that they are running securely within your AWS account."
   },
@@ -47,7 +50,23 @@
       "cazpian",
       "testing"
     ],
+    "image": "/img/Testing%20the%20JSON%20Automation.png",
     "date": "2025-12-26",
     "content": "This post was created automatically without writing any markdown files! \n\n ### Is it magic? \n No, it is just code."
+  },
+  {
+    "slug": "lakehouse-vs-data-warehouse-multi-cloud-2026",
+    "title": "Lakehouse vs Data Warehouse for Multi-Cloud Systems (2026 Guide)",
+    "description": "A comprehensive guide on choosing between Lakehouse and Data Warehouse architectures for multi-cloud analytics.",
+    "tags": [
+      "lakehouse",
+      "data-warehouse",
+      "multi-cloud",
+      "architecture",
+      "2026-guide"
+    ],
+    "image": "/img/Why%20Apache%20Iceberg%20and%20Spark%20for%20Cazpian.png",
+    "date": "2026-01-02",
+    "content": "As enterprises expand across AWS, Azure, and Google Cloud, multi-cloud analytics becomes a strategic requirement. Choosing the right architecture — lakehouse or data warehouse — shapes cost, governance, and future growth. This guide explains the differences with practical guidance for multi-cloud systems.\n\n<!-- truncate -->\n\n### What is a Data Warehouse?\nA data warehouse is a centralized, highly structured storage system designed for fast analytics (examples: Snowflake, Redshift, BigQuery). Warehouses often use schema-on-write and tightly coupled compute + storage.\n\n### What is a Data Lakehouse?\nA data lakehouse combines the flexibility of lakes (object storage) with warehouse reliability. Modern lakehouses use open table formats (Apache Iceberg, Delta Lake), support ACID, schema evolution, and can run SQL, ETL, and ML workloads.\n\n![Architecture Diagram](/img/Why%20Apache%20Iceberg%20and%20Spark%20for%20Cazpian.png)\n\n### Why Multi-Cloud Changes Everything\nMulti-cloud gives choice and resilience, but it adds complexity: data fragmentation, governance divergence, and cross-cloud costs. A lakehouse built on open standards solves many of these problems.\n\n### Architecture & Flexibility\n- **Warehouse**: Proprietary storage, single-cloud optimized, often requires moving data into the vendor cloud.\n- **Lakehouse**: Open formats (Iceberg), storage in S3/GCS/ADLS, portable compute — ideal for multi-cloud.\n\n### Cost Efficiency\nLakehouses decouple storage and compute; storage on object stores is cheaper, and compute can be used only when needed. Warehouses charge for both and become costly at scale, especially when duplicated across clouds.\n\n### Governance & Security\nLakehouses allow unified governance by using the same table formats and centralized policy engines. Platforms that implement governed compute, audit trails, and lineage make compliance across clouds practical.\n\n### Performance & Scalability\nLakehouses scale horizontally and can leverage optimized formats (Iceberg) with pruning, manifests, and indexing. For mixed workloads (streaming, ML, BI), lakehouses provide more flexibility and scale in multi-cloud setups.\n\n### AI & ML Integration\nLakehouses store raw and curated data together, simplifying ML pipelines and enabling feature stores, model training, and inference without heavy data movement.\n\n### When a Data Warehouse Still Makes Sense\nChoose a data warehouse if you operate entirely in a single cloud, have predictable BI workloads, and value a fully-managed experience over flexibility.\n\n### How Cazpian Helps\nCazpian is Apache Iceberg-native and designed for multi-cloud: governed compute, federated queries, and AI agents for orchestration.\n\n### FAQ\n\n**What is the difference between a lakehouse and data warehouse?**\nLakehouses combine open storage with warehouse features (ACID, SQL) while warehouses are proprietary and single-cloud oriented.\n\n**Why are lakehouses better for multi-cloud?**\nOpen formats and decoupled compute let you store data once and query from any cloud — reducing duplication and governance gaps.\n\n**Is migration difficult?**\nMigration has planning overhead (catalogs, table format conversion). However, tools and delta migration patterns make it practical — especially with Iceberg-native approaches."
   }
 ]

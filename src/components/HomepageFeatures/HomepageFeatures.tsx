@@ -74,7 +74,6 @@ export default function HomepageFeatures(): ReactNode {
                 onClick={() => handleTabChange(feature)}
               >
                 <div className="tab-header">
-                  <span className="tab-icon">{feature.icon}</span>
                   <Heading as="h3" className="tab-title">
                     {feature.title}
                   </Heading>

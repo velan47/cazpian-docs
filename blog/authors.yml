@@ -16,10 +16,21 @@ slorber:
   url: https://sebastienlorber.com
   image_url: https://github.com/slorber.png
   page:
-    # customize the url of the author page at /blog/authors/<permalink>
     permalink: '/all-sebastien-lorber-articles'
   socials:
     x: sebastienlorber
     linkedin: sebastienlorber
     github: slorber
     newsletter: https://thisweekinreact.com
+
+alex:
+  name: Alex Kim
+  title: Engineering lead
+  url: https://github.com/velan47
+  image_url: https://i.pravatar.cc/150?u=alex
+
+sarah:
+  name: Sarah Chen
+  title: Data Architect
+  url: https://github.com/velan47
+  image_url: https://i.pravatar.cc/150?u=sarah

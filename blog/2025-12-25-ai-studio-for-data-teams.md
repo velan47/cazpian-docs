@@ -3,7 +3,10 @@ slug: ai-studio-for-data-teams
 title: "AI Studio for Data Teams"
 description: "Introduce Cazpian AI Studio and how it helps data teams build agents and automations."
 tags: [ai-studio, ai, data-teams, automation]
+image: /img/Ai%20stutio%20for%20data%20teams.png
 ---
+
+![AI Studio for Data Teams](/img/Ai%20stutio%20for%20data%20teams.png)
 
 The biggest challenge in AI today isn't the model—it's the data. **Cazpian AI Studio** was built to bridge the gap between your Lakehouse and your AI applications.
 

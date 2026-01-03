@@ -1,0 +1,109 @@
+.ctaWrapper {
+    padding: 4rem 1rem;
+    /* Reduced height on large screens */
+    background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #4338ca 100%);
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Modern Grid Illustration */
+.ctaWrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    mask-image: radial-gradient(circle at center, black 0%, transparent 80%);
+    pointer-events: none;
+}
+
+.ctaTitle {
+    font-size: 2.25rem;
+    /* Reduced from 3rem */
+    font-weight: 800;
+    margin-bottom: 1rem;
+    /* Reduced from 1.5rem */
+    letter-spacing: -0.02em;
+    color: white !important;
+}
+
+.ctaSubtitle {
+    font-size: 1.1rem;
+    /* Reduced from 1.25rem */
+    max-width: 700px;
+    margin: 0 auto 2rem;
+    /* Reduced bottom margin from 3rem */
+    opacity: 0.85;
+    line-height: 1.6;
+}
+
+.ctaButtons {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+}
+
+.ctaButtonPrimary {
+    background: #6366f1;
+    color: white !important;
+    padding: 0.8rem 2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none !important;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.ctaButtonPrimary:hover {
+    background: #4f46e5;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+}
+
+.ctaButtonSecondary {
+    background: transparent;
+    color: white !important;
+    padding: 0.8rem 2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    text-decoration: none !important;
+    transition: all 0.2s ease;
+}
+
+.ctaButtonSecondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: white;
+    transform: translateY(-2px);
+}
+
+.arrow {
+    font-size: 1.2rem;
+}
+
+@media screen and (max-width: 768px) {
+    .ctaTitle {
+        font-size: 2rem;
+    }
+
+    .ctaButtons {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .ctaButtonPrimary,
+    .ctaButtonSecondary {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+    }
+}
